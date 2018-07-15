@@ -1,5 +1,6 @@
 from flask import render_template, flash, url_for, redirect
 from app import app
+from app.forms import ContactForm
 
 @app.route('/')
 @app.route('/index')
@@ -15,20 +16,16 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template('index.html', title='Home', user=user, posts=posts, contactForm=ContactForm())
 
 @app.route('/resume')
 def resume():
-    return render_template('resume.html')
+    return render_template('resume.html', contactForm=ContactForm())
 
 @app.route('/skills')
 def skills():
-    return render_template('skills.html')
+    return render_template('skills.html', contactForm=ContactForm())
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
+    return render_template('projects.html', contactForm=ContactForm())

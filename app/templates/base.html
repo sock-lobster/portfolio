@@ -1,7 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}Welcome to Dan Barter{% endif %}
+    {% if title %}{{ title }} - Dan Barter{% else %}Dan Barter{% endif %}
 {% endblock %}
 
 {% block navbar %}
@@ -23,7 +23,7 @@
                     <li><a href="{{ url_for('projects') }}">Projects</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -39,6 +39,8 @@
             {% endfor %}
         {% endif %}
         {% endwith %}
+
+        {% include '_contact.html' %}
 
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
