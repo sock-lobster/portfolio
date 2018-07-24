@@ -1,5 +1,6 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 {% from 'bootstrap/wtf.html' import form_field %}
+
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -11,18 +12,20 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-5">
-                        {{ form_field(contactForm.name) }}
-                        {{ form_field(contactForm.email) }}
+                <form id="contactForm" name="contactForm" class="form" method="post">
+                    <div class="row">
+                        <div class="col-md-5">
+                            {{ contactForm.hidden_tag() }}
+                            {{ form_field(contactForm.name) }}
+                            {{ form_field(contactForm.email) }}
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_field(contactForm.message) }}
+                        </div>
                     </div>
-                    <div class="col-md-12">
-                        {{ form_field(contactForm.message) }}
-                    </div>
-                </div>
-                    <button type="button" class="btn btn-secondary pull-right" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Send</button> -->
                     {{ form_field(contactForm.submit, button_map={'submit':'primary'}) }}
+                    <button type="button" class="btn btn-secondary pull-right" data-dismiss="modal">Close</button>
+                </form>
             </div>
         </div>
     </div>
